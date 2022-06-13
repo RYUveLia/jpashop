@@ -29,6 +29,7 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	implementation("org.ktorm:ktorm-core:3.5.0")
 	implementation("junit:junit:4.13.1")
 	compileOnly("org.projectlombok:lombok")
 	runtimeOnly("com.h2database:h2")

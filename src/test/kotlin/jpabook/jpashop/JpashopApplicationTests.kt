@@ -17,30 +17,4 @@ import javax.transaction.Transactional
 @RunWith(SpringRunner::class)
 @SpringBootTest
 class JpashopApplicationTests {
-	@Autowired lateinit var memberRepository: MemberRepository
-	@PersistenceContext lateinit var entityManager: EntityManager
-
-	/*@BeforeEach
-	fun setup() {
-		memberRepository.save(Member(username = "alice"))
-		memberRepository.save(Member(username = "bob"))
-	}*/
-
-	@Test
-	//@Transactional
-	@Rollback(false)
-	fun testMember() {
-		// given
-		var member = Member(username="alice")
-
-		// when
-		var saveId = memberRepository.save(member).id
-		var findMember = memberRepository.findById(saveId).get()
-
-		// then
-		Assertions.assertEquals(findMember.id, member.id)
-		Assertions.assertEquals(findMember.username, member.username)
-		Assertions.assertEquals(findMember, member)
-	}
-
 }

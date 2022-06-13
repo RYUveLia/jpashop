@@ -9,7 +9,7 @@ class HelloController {
 
     @GetMapping("hello")
     fun hello(model: Model): String{
-        model.addAttribute("data", "hello")
+
         return "hello"
     }
 }
