@@ -1,10 +1,14 @@
 plugins {
 	id("org.springframework.boot") version "2.7.0"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
-	kotlin("jvm") version "1.6.21"
-	kotlin("plugin.spring") version "1.6.21"
-	kotlin("plugin.jpa") version "1.6.21"
-	kotlin("plugin.allopen") version "1.4.32"
+
+	val kotlinVersion = "1.6.21"
+
+	kotlin("jvm") version kotlinVersion
+	kotlin("kapt") version kotlinVersion
+	kotlin("plugin.spring") version kotlinVersion
+	kotlin("plugin.jpa") version kotlinVersion
+	kotlin("plugin.allopen") version kotlinVersion
 }
 
 group = "jpabook"
@@ -18,6 +22,7 @@ configurations {
 }
 
 repositories {
+	jcenter()
 	mavenCentral()
 }
 
@@ -29,7 +34,7 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("org.ktorm:ktorm-core:3.5.0")
+	compileOnly("au.com.console:kassava:2.1.0")
 	implementation("junit:junit:4.13.1")
 	compileOnly("org.projectlombok:lombok")
 	runtimeOnly("com.h2database:h2")
@@ -42,6 +47,12 @@ tasks.withType<Test> {
 }
 
 allOpen {
+	annotation("javax.persistence.Entity")
+	annotation("javax.persistence.Embeddable")
+	annotation("javax.persistence.MappedSuperclass")
+}
+
+noArg {
 	annotation("javax.persistence.Entity")
 	annotation("javax.persistence.Embeddable")
 	annotation("javax.persistence.MappedSuperclass")

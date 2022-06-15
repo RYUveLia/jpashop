@@ -1,6 +1,5 @@
 package jpabook.jpashop
 
-import org.ktorm.database.Database
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
